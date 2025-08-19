@@ -1,37 +1,32 @@
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-
-function Home() {
-  return <h2>🏠 Home Page</h2>;
-}
-
-function About() {
-  return <h2>ℹ️ About Page</h2>;
-}
-
-function Contact() {
-  return <h2>📞 Contact Page</h2>;
-}
-
-function App() {
-  return (
+import "./App.css"
+import{BrowserRouter, Routes, Route} from "react-router-dom";
+function App(){
+  return <div>
+    Allen|calss11|class12
     <BrowserRouter>
-      <div>
-        {/* Navigation Menu */}
-        <nav>
-          <Link to="/">Home</Link> |{" "}
-          <Link to="/about">About</Link> |{" "}
-          <Link to="/contact">Contact</Link>
-        </nav>
-
-        {/* Routes */}
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </div>
+    <Routes>
+      <Route path="/neet/online-class-11" element={<Class11Program/>}/>
+      <Route path="/neet/online-calss-12" element={<Class12Program/>}/>
+      <Route path="/" element={<Landing/>}/>
+    </Routes>
     </BrowserRouter>
-  );
+  </div>
 }
+function Landing(){
+  return<div>
+    <h1>home page</h1>
+  </div>
+}
+function Class11Program(){
+  return <div>
+    Neet Class 11th
+  </div>
 
-export default App;
+}
+function Class12Program(){
+  return <div>
+    Neet Class 12th
+  </div>
+
+}
+export default App
