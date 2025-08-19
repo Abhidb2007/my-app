@@ -1,32 +1,41 @@
-import "./App.css"
-import{BrowserRouter, Routes, Route} from "react-router-dom";
-function App(){
-  return <div>
-    Allen|calss11|class12
-    <BrowserRouter>
-    <Routes>
-      <Route path="/neet/online-class-11" element={<Class11Program/>}/>
-      <Route path="/neet/online-calss-12" element={<Class12Program/>}/>
-      <Route path="/" element={<Landing/>}/>
-    </Routes>
-    </BrowserRouter>
-  </div>
-}
-function Landing(){
-  return<div>
-    <h1>home page</h1>
-  </div>
-}
-function Class11Program(){
-  return <div>
-    Neet Class 11th
-  </div>
+import "./App.css";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
-}
-function Class12Program(){
-  return <div>
-    Neet Class 12th
-  </div>
+function App() {
+  return (
+    <div>
+      {/* Navigation Menu */}
+      <BrowserRouter>
+        <nav>
+          <Link to="/">Allen</Link>
+          <Link to="/sports-play-class-10">Class 10</Link> |{" "}
+          <Link to="/sports-play-class-11">Class 11</Link>
+        </nav>
 
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route path="/sports-play-class-10" element={<Class10 />} />
+          <Route path="/sports-play-class-11" element={<Class11 />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
+  );
 }
-export default App
+
+function Landing() {
+  return (
+    <div>
+      <h1>Home Page</h1>
+    </div>
+  );
+}
+
+function Class10() {
+  return <div>Sports Play for Class 10th</div>;
+}
+
+function Class11() {
+  return <div>Sports Play for Class 11th</div>;
+}
+
+export default App;
