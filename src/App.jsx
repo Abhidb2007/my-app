@@ -5,7 +5,9 @@ function App() {
   return (
     <BrowserRouter>
       
-    
+    <Link to="/">Allen</Link>
+    <Link to="/sports-play-class-10">Class 10</Link>
+    <Link to="/sports-play-class-11">Class 11</Link>
           
         
 
@@ -28,7 +30,7 @@ function Layout(){
     <Link to="/">Allen</Link>
     <Link to="/sports-play-class-10">Class 10</Link>
     <Link to="/sports-play-class-11">Class 11</Link>
-    <div style={{height:"50vh"}}>
+    <div style={{height:"50vh", background:"red"}}>
       <Outlet/>
       footer
     </div>
