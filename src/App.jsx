@@ -4,13 +4,10 @@ import { BrowserRouter, Routes, Route, Link, useNavigate } from "react-router-do
 function App() {
   return (
     <BrowserRouter>
-      <div>
-        {/* Navigation Menu */}
-        <nav>
-          <Link to="/">Allen</Link>
-          <Link to="/sports-play-class-10">Class 10</Link>
-          <Link to="/sports-play-class-11">Class 11</Link>
-        </nav>
+      
+    
+          
+        
 
         {/* Routes */}
         <Routes>
@@ -22,9 +19,21 @@ function App() {
 
         {/* Footer */}
         <footer>Footer | Contact Us</footer>
-      </div>
+    
     </BrowserRouter>
   );
+}
+function Layout(){
+  return <div style={{height:"100vh"}}>
+    <Link to="/">Allen</Link>
+    <Link to="/sports-play-class-10">Class 10</Link>
+    <Link to="/sports-play-class-11">Class 11</Link>
+    <div style={{height:"50vh"}}>
+      <Outlet/>
+      footer
+    </div>
+
+  </div>
 }
 
 function Errorpage() {
