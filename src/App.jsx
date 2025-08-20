@@ -5,13 +5,13 @@ function App() {
   return (
     <div>
       {/* Navigation Menu */}
-      <BrowserRouter>
+      
         <nav>
-          <Link to="/">Allen</Link>
-          <Link to="/sports-play-class-10">Class 10</Link> |{" "}
-          <Link to="/sports-play-class-11">Class 11</Link>
+          <a href="/">Allen</a>
+          <a href="/sports-play-class-11">Class 10</a>
+          <a href="/sports-play-class-12">Class 11</a>
         </nav>
-
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/sports-play-class-10" element={<Class10 />} />
@@ -21,7 +21,11 @@ function App() {
     </div>
   );
 }
-
+function Errorpage(){
+  return <div>
+    Sorry Page not found
+  </div>
+}
 function Landing() {
   return (
     <div>
@@ -30,12 +34,22 @@ function Landing() {
   );
 }
 
+
 function Class10() {
   return <div>Sports Play for Class 10th</div>;
 }
 
+
 function Class11() {
-  return <div>Sports Play for Class 11th</div>;
+  const navigate=useNavigate();
+  function redirectUser(){
+    navigate("/");
+  }
+  return <div>
+
+    Sports Play for Class 11th
+    <button onClick={redirectUser}>Go back to landing page</button>
+    </div>;
 }
 
 export default App;
