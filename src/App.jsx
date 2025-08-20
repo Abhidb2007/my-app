@@ -18,7 +18,7 @@ function App() {
           <Route index element={<Landing />} />
           <Route path="sports-play-class-10" element={<Class10 />} />
           <Route path="sports-play-class-11" element={<Class11 />} />
-          <Route path="*" element={<Errorpage />} />
+          
         </Route>
       </Routes>
 
@@ -38,7 +38,7 @@ function Layout() {
         <Outlet />
       </div>
 
-      <footer style={{ marginTop: "20px" }}>Footer inside Layout</footer>
+      <footer style={{ padding: "6px",background:"pink" }}>Footer inside Layout</footer>
     </div>
   );
 }
@@ -52,10 +52,7 @@ function Header() {
   );
 }
 
-// Error Page
-function Errorpage() {
-  return <div>❌ Sorry, page not found</div>;
-}
+
 
 // Landing Page
 function Landing() {
