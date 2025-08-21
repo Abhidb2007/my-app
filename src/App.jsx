@@ -1,9 +1,20 @@
+import {useState} from "react";
 import "./App.css"
+//a clock with start and stop button
 function App(){
-  const[currentCount, setCount]=useState(0);
-  return <div>
+  const[currentCount, setCurrentCount]=useState(0);
+  function startClock(){
+    setInterval(function(){
+      setCurrentCount(count=count+1);
   
-    <button onClick={startTimer}>start</button>
+  
+    },1000);
+  }  
+
+  return <div>
+    {currentCount}
+    <button input id="text"></button>
+    <button onClick={startClock}>start</button>
   </div>
 
 }
