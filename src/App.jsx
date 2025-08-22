@@ -1,28 +1,24 @@
-import {useState} from "react";
-import "./App.css"
-//a clock with start and stop button
-function App(){
-  const[currentCount, setCurrentCount]=useState(1);
-  const timeRef=useRef(null);
-  function startClock(){
-    if(timeRef.current)return;
-    timeRef.current=setInterval(function(){
-      setCurrentCount(c=>c+1);
-  
-  
-    },1000);
-  } 
-  function stopClock() {
-    clearInterval(timerRef.current);
-    timerRef.current = null; // reset so start can work again
+import { useState } from "react";
+
+function BulbToggle() {
+  const [isOn, setIsOn] = useState(false); // state variable
+
+  function toggleBulb() {
+    setIsOn(!isOn); // toggle state
   }
 
-  return <div>
-    {currentCount}
-    
-    <button onClick={startClock}>Start</button>
-    <button onClick={stopClock}>Stop</button>
-  </div>
-
+  return (
+    <div>
+      <img 
+        src={isOn ? "bulb-on.png" : "bulb-off.png"} 
+        alt="Bulb" 
+        width="100"
+      />
+      <button onClick={toggleBulb}>
+        {isOn ? "Turn OFF" : "Turn ON"}
+      </button>
+    </div>
+  );
 }
-export default App;
+
+export default BulbToggle;
