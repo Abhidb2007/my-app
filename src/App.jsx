@@ -1,30 +1,29 @@
-import React, { createContext, useContext, useState } from "react";
+import {useState} from "react";
+import "./App.css";
+function App(){
+  return <div>
+    <Fan/>
+ </div>
+}
+function Fan(){
+  const[fanOn, setFanOn]=useState(true);
+  return(
+    <div>
+      <FanState fanOn={fanOn}/>
+      <ToggleFanState fanOn={fanOn} setFanOn={setFanOn}/>
 
-const ThemeContext = createContext();
-
-function App() {
-  const [theme, setTheme] = useState("light");
-
-  return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
-      <Header />
-      <Button />
-    </ThemeContext.Provider>
+    </div>
   );
 }
+function FanState({fanOn}){
+  return <div>{fanOn? "fan on" : "fan off"}</div>;
 
-function Header() {
-  const { theme } = useContext(ThemeContext);
-  return <h1>Current Theme: {theme}</h1>;
 }
-
-function Button() {
-  const { theme, setTheme } = useContext(ThemeContext);
+function ToggleFanState({fanOn, setFanOn}){
   return (
-    <button onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
-      Toggle Theme
+    <button onClick={()=>setFanOn(!fanOn)}>
+      Toggle Fan
     </button>
   );
 }
-
 export default App;
