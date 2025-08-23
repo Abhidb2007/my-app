@@ -1,45 +1,36 @@
-import { atom, selector, useRecoilState, useRecoilValue } from "recoil";
+import React, { createContext, useContext, useState } from "react";
 
-// 1️⃣ Atom: Shared cart state
-const cartState = atom({
-  key: "cartState",
-  default: [],
-});
+const CountContext = createContext(); // The box
 
-// 2️⃣ Selector: Compute total price
-const cartTotal = selector({
-  key: "cartTotal",
-  get: ({ get }) => {
-    const cart = get(cartState);
-    return cart.reduce((total, item) => total + item.price, 0);
-  },
-});
+function CountProvider({ children }) {
+  const [count, setCount] = useState(0); // number inside the box
 
-// 3️⃣ Components
-function Product({ item }) {
-  const [cart, setCart] = useRecoilState(cartState);
-
-  function addToCart() {
-    setCart([...cart, item]);
-  }
+  const increment = () => setCount(prev => prev + 1); // increase number
 
   return (
-    <div>
-      <h3>{item.name}</h3>
-      <p>₹{item.price}</p>
-      <button onClick={addToCart}>Add to Cart</button>
-    </div>
+    <CountContext.Provider value={{ count, increment }}>
+      {children} {/* All children can access this box */}
+    </CountContext.Provider>
   );
 }
 
-function Cart() {
-  const cart = useRecoilValue(cartState);
-  const total = useRecoilValue(cartTotal);
+function Display() {
+  const { count } = useContext(CountContext); // read number from the box
+  return <h1>Count: {count}</h1>;
+}
 
+function Button() {
+  const { increment } = useContext(CountContext); // press button to increase
+  return <button onClick={increment}>Increase</button>;
+}
+
+function App() {
   return (
-    <div>
-      <h2>Cart Items: {cart.length}</h2>
-      <h3>Total: ₹{total}</h3>
-    </div>
+    <CountProvider>
+      <Display />
+      <Button />
+    </CountProvider>
   );
 }
+
+export default App;
