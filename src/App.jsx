@@ -1,35 +1,29 @@
 import React, { createContext, useContext, useState } from "react";
 
-const CountContext = createContext(); // The box
+const ThemeContext = createContext();
 
-function CountProvider({ children }) {
-  const [count, setCount] = useState(0); // number inside the box
-
-  const increment = () => setCount(prev => prev + 1); // increase number
+function App() {
+  const [theme, setTheme] = useState("light");
 
   return (
-    <CountContext.Provider value={{ count, increment }}>
-      {children} {/* All children can access this box */}
-    </CountContext.Provider>
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      <Header />
+      <Button />
+    </ThemeContext.Provider>
   );
 }
 
-function Display() {
-  const { count } = useContext(CountContext); // read number from the box
-  return <h1>Count: {count}</h1>;
+function Header() {
+  const { theme } = useContext(ThemeContext);
+  return <h1>Current Theme: {theme}</h1>;
 }
 
 function Button() {
-  const { increment } = useContext(CountContext); // press button to increase
-  return <button onClick={increment}>Increase</button>;
-}
-
-function App() {
+  const { theme, setTheme } = useContext(ThemeContext);
   return (
-    <CountProvider>
-      <Display />
-      <Button />
-    </CountProvider>
+    <button onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
+      Toggle Theme
+    </button>
   );
 }
 
