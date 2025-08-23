@@ -1,29 +1,39 @@
-import {useState} from "react";
-import "./App.css";
-function App(){
-  return <div>
-    <Fan/>
- </div>
+import React, {createContext, useContext,useState} from "react"
+const CountContext = createContext();
+const CountUpdateContext = createContext();
+export function useCount(){
+  return useContext(CountContext);
 }
-function Fan(){
-  const[fanOn, setFanOn]=useState(true);
-  return(
-    <div>
-      <FanState fanOn={fanOn}/>
-      <ToggleFanState fanOn={fanOn} setFanOn={setFanOn}/>
-
-    </div>
-  );
+export function useCountUpdate(){
+  return useContext(CountUpdateContext);
 }
-function FanState({fanOn}){
-  return <div>{fanOn? "fan on" : "fan off"}</div>;
-
-}
-function ToggleFanState({fanOn, setFanOn}){
+function CountProvider({children}){
+  const[count, setCount]=useState(0);
+  const increment=()=>setCount(prev=>prev+1);
   return (
-    <button onClick={()=>setFanOn(!fanOn)}>
-      Toggle Fan
-    </button>
+    <CountContext.Provider value={count}>
+      <CountUpdateContext.Provider value={increment}>
+        {children}
+      </CountUpdateContext.Provider>
+    </CountContext.Provider>
   );
+
+} 
+function Display() {
+  const count=useCount();
+  return <h1>Count:{count}</h1>;
+
 }
-export default App;
+function Button (){
+  const increment=useCountUpdate();
+  return <button onClick={increment}>increase</button>;
+
+}
+export default function App(){
+  return(
+    <CountProvider>
+      <Display/>
+        <Button/>
+    </CountProvider>
+  )
+}
