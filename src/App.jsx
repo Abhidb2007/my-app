@@ -1,24 +1,22 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-function BulbToggle() {
-  const [isOn, setIsOn] = useState(false); // state variable
+function App() {
+  const [count, setCount] = useState(1); // start from 1
 
-  function toggleBulb() {
-    setIsOn(!isOn); // toggle state
-  }
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCount(prevCount => prevCount + 1); // update count every second
+    }, 1000);
+
+    return () => clearInterval(interval); // cleanup on unmount
+  }, []);
 
   return (
-    <div>
-      <img 
-        src={isOn ? "bulb-on.png" : "bulb-off.png"} 
-        alt="Bulb" 
-        width="100"
-      />
-      <button onClick={toggleBulb}>
-        {isOn ? "Turn OFF" : "Turn ON"}
-      </button>
+    <div style={{ textAlign: "center", marginTop: "50px" }}>
+      <h1>{count}</h1>
+      <p>This number decreases automatically (rendering).</p>
     </div>
   );
 }
 
-export default BulbToggle;
+export default App
