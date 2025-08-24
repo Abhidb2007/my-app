@@ -1,42 +1,36 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+function App(){
+  return(
+    <div>
+      <PostComponent/>
+    </div>
+  )
 }
+const style={width:200,backgroundColor:"pink",borderRadius:10,borderColor:"black",borderWidth:1,display:"flex"}
+function PostComponent(){
+  return<div style={style}>
+      <img src={"https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRys3EE_iaBjNvT1ybIeGvK3ofEU2PRXCb7SI8M2Q_tkGvXeSqAflEwlBKlhvHbTz9NiZsPEP8j_YMCXevva_zNGA"} style={{
+        width:40,
+        height:40,
+        borderRadius:20
+      }}/>
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+    
+    
+    <div style={{fontSize:10}}>
+      <b>
+        100x devs
+      </b>
+      
+      <div>12,00 followers</div>
+      <div>12m</div>
+    
+    </div>
+    <a>
+    <div style={{fontSize:12}}>
+    hi i am abhi  
+    </div>
+    </a>
+    
+  </div>
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
+export default App;
