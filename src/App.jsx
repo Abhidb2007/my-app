@@ -1,35 +1,10 @@
-import { useState } from "react";
+import{useState} from "react";
+function App(){
+  return <div style={{backgroundColor:"pink"}}>
+    <img src={"https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg"}/> width={20}
 
-function App() {
-  return (
-    <div>
-      <ToggleMessage />
-    </div>
-  );
+
+  </div>
+
 }
-
-function ToggleMessage() {
-  const [show, setShow] = useState(true);
-  const [count, setCount] = useState(0);
-
-  const handleClick = () => {
-    setShow(!show);
-    setCount(count + 1); // Increase count on every button click
-  };
-
-  return (
-    <div style={{ margin: "20px", padding: "10px", border: "1px solid #ccc" }}>
-      <button onClick={handleClick}>
-        {show ? "Hide Message" : "Show Message"}
-      </button>
-
-      {show && <p>Hello! This message is toggled.</p>}
-
-      <p>
-        Notifications: <strong>{count}</strong>
-      </p>
-    </div>
-  );
-}
-
 export default App;
