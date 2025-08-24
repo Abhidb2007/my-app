@@ -1,14 +1,30 @@
+import React, {useState} from "react";
 function App(){
-  <h1>hellow</h1>
   return(
     <div style={{background:"grey",height:"100vh",width:"100vh" }}>
+      <ToggleMessage/>
+      <Greeting name={"abhi"}/>
       <div style={{display:"flex",justifyContent:"center"}}>
         <div>
         <div>
-          <PostComponent/>
+          <PostComponent
+          name={"abhi"}
+          subtitle={"1200 followers"}
+          time={"12m"}
+          image={"https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRys3EE_iaBjNvT1ybIeGvK3ofEU2PRXCb7SI8M2Q_tkGvXeSqAflEwlBKlhvHbTz9NiZsPEP8j_YMCXevva_zNGA"}
+          description={" i iam abhi"}
+          />
+          <br/>
         </div>  
         <div>
-          <PostComponent/>
+          <PostComponent
+
+          name={"abhi"}
+          subtitle={"1200 followers"}
+          time={"12m"}
+          image={"https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRys3EE_iaBjNvT1ybIeGvK3ofEU2PRXCb7SI8M2Q_tkGvXeSqAflEwlBKlhvHbTz9NiZsPEP8j_YMCXevva_zNGA"}
+          description={" i iam abhi"}
+          />
           <br/>
         </div>
         <div>
@@ -21,6 +37,19 @@ function App(){
   )
 }
 const style={width:200,backgroundColor:"pink",borderRadius:10,borderColor:"black",borderWidth:1,display:"flex"}
+function ToggleMessage() {
+  const [show, setShow] = useState(false);
+
+  return (
+    <div>
+      <button onClick={() => setShow(!show)}>
+        {show ? "Hide Message" : "Show Message"}
+      </button>
+
+      {show && <p>Hello! This message is toggled.</p>}
+    </div>
+  );
+}
 function PostComponent(){
   return<div style={style}>
     <div style={{display:"flex"}}>
