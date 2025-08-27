@@ -1,10 +1,15 @@
-import{useState} from "react";
+import {useState} from "react";
+import "./App.css"
 function App(){
-  return <div style={{backgroundColor:"pink"}}>
-    <img src={"https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg"}/> width={20}
+  const[count,setCount]=useState(0);
 
-
+function increase(){
+  setCount(count+1)
+}
+return(
+  <div>
+    <button onClick={increase}>increase{count}</button>
   </div>
-
+)
 }
 export default App;
