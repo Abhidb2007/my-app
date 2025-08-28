@@ -1,29 +1,36 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import "./App.css";
-import { usePrev } from "./assets/hooks/use-prev";
 
-function useDebounce(originalFn){
-  const currentCheck=useRef();
+// custom hook for debounce
+function useDebounce(originalFn, delay = 300) {
+  const currentClock = useRef(null);
 
-const fn=()=>{
-  clearTimeout(currentClock.current);
-  currentClock.current=setTimeout(originalFn,300);
+  const fn = (...args) => {
+    // clear previous timer
+    clearTimeout(currentClock.current);
 
+    // set new timer
+    currentClock.current = setTimeout(() => {
+      originalFn(...args); // call original function with args
+    }, delay);
+  };
 
+  return fn;
 }
-return fn
-}
-function App(){
-  function sendDataToBackend(){
-    fetch("api.amazon.com/search/");
 
-   
-}
-const debounceFn=useDebounce(sendDataToBackend)
-return(
-  <>
-  <input type="text" onChange={debounceFn}></input>
-  </>
-);
+function App() {
+  function sendDataToBackend(e) {
+    fetch(`https://api.amazon.com/search?q=${e.target.value}`);
+    console.log("API called with:", e.target.value);
+  }
 
+  const debounceFn = useDebounce(sendDataToBackend, 500); // wait 0.5s
+
+  return (
+    <>
+      <input type="text" onChange={debounceFn} placeholder="Search..." />
+    </>
+  );
 }
+
+export default App;

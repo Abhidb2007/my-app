@@ -4,8 +4,8 @@ export function usePrev(value) {
   const ref = useRef();
 
   useEffect(() => {
-    ref.current = value;
+    ref.current = value; // update ref whenever value changes
   }, [value]);
 
-  return ref.current;
+  return ref.current; // previous value (before update)
 }
