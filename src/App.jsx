@@ -1,36 +1,17 @@
-import { useState, useRef } from "react";
-import "./App.css";
+import { atom, useRecoilState } from "recoil";
 
-// custom hook for debounce
-function useDebounce(originalFn, delay = 300) {
-  const currentClock = useRef(null);
+const countState = atom({
+  key: "countState", 
+  default: 0,
+});
 
-  const fn = (...args) => {
-    // clear previous timer
-    clearTimeout(currentClock.current);
-
-    // set new timer
-    currentClock.current = setTimeout(() => {
-      originalFn(...args); // call original function with args
-    }, delay);
-  };
-
-  return fn;
-}
-
-function App() {
-  function sendDataToBackend(e) {
-    fetch(`https://api.amazon.com/search?q=${e.target.value}`);
-    console.log("API called with:", e.target.value);
-  }
-
-  const debounceFn = useDebounce(sendDataToBackend, 500); // wait 0.5s
+function Counter() {
+  const [count, setCount] = useRecoilState(countState);
 
   return (
     <>
-      <input type="text" onChange={debounceFn} placeholder="Search..." />
+      <p>{count}</p>
+      <button onClick={() => setCount(count + 1)}>Increase</button>
     </>
   );
 }
-
-export default App;
