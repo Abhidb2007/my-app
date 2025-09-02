@@ -7,7 +7,7 @@ function App() {
   const [city, setCity] = useState("");
   const [weather, setWeather] = useState(null);
   const [forecast, setForecast] = useState([]);
-  const [dark, setDark] = useState(false);
+  const [dark, setDark] = useState(true);
 
   // ✅ Fetch Current Weather
   const getWeather = async (query) => {
@@ -16,7 +16,7 @@ function App() {
         `https://api.openweathermap.org/data/2.5/weather?q=${query}&units=metric&appid=${API_KEY}`
       );
       const data = await res.json();
-      if (data.cod !== 200) {
+      if (data.code !== 200) {
         alert("City not found!");
         return;
       }
@@ -137,7 +137,7 @@ function App() {
               >
                 <p className="font-semibold">
                   {new Date(day.dt_txt).toLocaleDateString("en-US", {
-                    weekday: "short",
+                    weekday: "short"
                   })}
                 </p>
                 <p className="text-xl">{day.main.temp}°C</p>
