@@ -137,7 +137,7 @@ function App() {
               >
                 <p className="font-semibold">
                   {new Date(day.dt_txt).toLocaleDateString("en-US", {
-                    weekday: "short"
+                    weekday: "short",
                   })}
                 </p>
                 <p className="text-xl">{day.main.temp}°C</p>
