@@ -127,7 +127,7 @@ function App() {
       {forecast.length > 1 && (
         <div className="mt-8">
           <h3 className="text-2xl font-semibold mb-4 text-center">
-            3-Day Forecast
+            5-Day Forecast
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 gap-4">
             {forecast.map((day) => (
