@@ -124,7 +124,7 @@ function App() {
       )}
 
       {/* 5-Day Forecast */}
-      {forecast.length > 0 && (
+      {forecast.length > 1 && (
         <div className="mt-8">
           <h3 className="text-2xl font-semibold mb-4 text-center">
             3-Day Forecast
