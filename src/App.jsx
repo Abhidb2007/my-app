@@ -112,7 +112,7 @@ function App() {
       {/* Current Weather */}
       {weather && (
         <div className="bg-white text-black rounded-2xl shadow-lg p-6 text-center mb-6 w-80 mx-auto">
-          <h2 className="text-2xl font-semibold">{weather.name}</h2>
+          <h2 className="text-3xl font-semibold">{weather.name}</h2>
           <p className="capitalize">{weather.weather[0].description}</p>
           <p className="text-4xl font-bold">{weather.main.temp}°C</p>
           <p>
