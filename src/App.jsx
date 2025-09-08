@@ -72,7 +72,7 @@ function App() {
   return (
     <div
       className={`min-h-screen p-6 transition-colors ${
-        dark ? "bg-gray-900 text-white" : "bg-blue-100 text-black"
+        dark ? "bg-gray-800 text-white" : "bg-blue-100 text-black"
       }`}
     >
       {/* Header */}
